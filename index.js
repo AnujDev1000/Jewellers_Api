@@ -24,15 +24,14 @@ app.use("/api/employees" ,require("./routes/employeeRoutes"))
 app.use("/api/customers" ,require("./routes/customerRoutes"))
 app.use("/api/purchases" ,require("./routes/purchaseRoutes"))
 
-// Listening to port
-app.listen(process.env.PORT, () => {
-    console.log("Listening to port : " + process.env.PORT)
-})
 
 // Connection to Database
 mongoose.connect(process.env.DBURI)
     .then(() => {
         console.log("Connnected to DB!")
+        app.listen(process.env.PORT, () => {
+        console.log("Listening to port : " + process.env.PORT)
+})
     })
     .catch(err =>{
         console.log(err)    
